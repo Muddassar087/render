@@ -21,4 +21,5 @@
     </ul>
 
 <h1>DEMO</h1>
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/69845990/143591152-39763b8e-d1aa-48e0-85fd-4d51524c6224.gif)
+![demo-gif](https://user-images.githubusercontent.com/69845990/143591590-5294b616-f84c-4133-8f01-eb8ac076f300.gif)
+
