@@ -80,8 +80,8 @@ class Panel(tk.Frame):
 		self['width'] = 876
 
 	def build(self):
-		self.panel = tk.Frame(master=self ,width=self["width"], height=self["height"])
-		self.panel.pack(side=LEFT , pady=60, expand=1, fill=X, anchor=NW)	
+		self.panel = tk.Frame(master=self ,width=self["width"], height=self["height"], border=2, relief=GROOVE)
+		self.panel.pack(side=LEFT , pady=60, expand=1, fill=X, anchor=NW, padx=10)	
 		tk.Label(master=self.panel, text="Transferring Files", font=("roboto", 14)).pack(padx=20, pady=10, anchor=NW)
 
 		self.TableHeaderFrame(master=self.panel)	
@@ -92,6 +92,9 @@ class Panel(tk.Frame):
 	def buildList(self, names):
 		self.initS.delete()
 		self.af.show()
+		if transferringFilesFrames.__len__() != 0:
+			for val in transferringFilesFrames.values(): val.destroy()
+			
 		for i in names:
 			transferringFilesFrames[i] = self._FilesNameWrappar(self.panel, i)
 

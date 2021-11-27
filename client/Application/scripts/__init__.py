@@ -1,10 +1,10 @@
 """
-This file contains all the panel and nesscary frames instances to refresh them later
+This file contains all the panel and necessary frames instances to refresh them later in the project
 """
-HOST= "192.168.43.171"
-PORT=5000
+# HOST= ""
+# PORT=5000
 FORMAT="utf-8"
-ADDRESS = (HOST, PORT)
+# ADDRESS = (HOST, PORT)
 VIDEOBUFFER=1048576
 BUFFER=4096
 QUIT="QUIT"
@@ -14,9 +14,9 @@ ACCEPTED="ACCEPTED"
 _SEND="-s"
 SIZE_RECEIVED = "SIZE RECEIVED"
 START_SENDING = "START SENDING"
-IMAGE_EXT = ["png", "jpg"]
+IMAGE_EXT = ["png", "jpg", "jpeg"]
 VIDEO_EXT = ["mkv", "mp4", "3gp"]
-DOC_EXT = ["docx", "pdf", "csv", "pptx"]
+DOC_EXT = ["docx", "pdf", "csv", "pptx", "xlxs"]
 MUSIC_EXT = ['mp3']
 
 class bcolors:
@@ -33,3 +33,4 @@ class bcolors:
 _instances = {}
 transferringFilesFrames = {}
 serverIp = {}
+filesframe = {}

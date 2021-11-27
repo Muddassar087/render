@@ -1,0 +1,22 @@
+This file contains the information about the project and Developer
+
+------------------------------
+|Files             |     LOC |
+|--------------------------- |
+|_mainWindow.py    |     68  |
+|filepanel.py      |     125 |
+|services.py       |     88  |
+|tablepanel.py     |     116 |
+|model.py          |     12  |
+|_init__.py        |     36  |
+|--------------------------- |
+|6                 |     445 |
+------------------------------
+
+Language: Python, Dart (Flutter; mobile app)
+version: 3.9
+library: (tkinter, Socket)
+Data: 26 Nov, 2021
+Developer: Muhammad Muddassar
+Email: muddassar087@gmail.com
+github username: Muddassar087

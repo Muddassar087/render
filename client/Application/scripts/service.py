@@ -1,18 +1,26 @@
 import json
 import math
 import socket
-from tkinter import Widget
+from tkinter import EXCEPTION, Widget
+from tkinter.constants import ACTIVE
 import scripts.model as model
-from scripts.__init__ import _instances, serverIp, BUFFER, VIDEO_EXT, VIDEOBUFFER, FORMAT, START_SENDING, transferringFilesFrames, IMAGE_EXT, DOC_EXT,MUSIC_EXT
-
+from scripts.__init__ import _instances, serverIp, BUFFER, VIDEO_EXT, VIDEOBUFFER, FORMAT, START_SENDING, transferringFilesFrames, IMAGE_EXT, DOC_EXT,MUSIC_EXT, filesframe
+""""
+this file is used to tranfer files
+"""
 def main():
-    root = _instances['root']
     _listFiles = model.names
+    
     ind = 0
     t = _listFiles.__len__()
     for _file, path in _listFiles.items():
-        soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        soc.connect((serverIp["ip"], 5000))
+        try:
+            soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            soc.connect((serverIp["ip"], 5000))
+        except Exception:
+            from tkinter.messagebox import showerror as error
+            error(title="Server error", message="Server not connected check your IP")
+
         _fileName = path
         fileName = _file
         fileType = getFileType(filename=fileName)
@@ -28,7 +36,6 @@ def main():
         dictionary = json.dumps(dictionary)
         soc.send(f"{dictionary}".encode(FORMAT))
         while True:
-            root.update()
             data = soc.recv(VIDEOBUFFER).decode(FORMAT)
             if data == START_SENDING:
                 print("SENDING file...")
@@ -47,9 +54,21 @@ def main():
                 file_.close()
                 break
         soc.close()
+        
+
         ind+=1
+        """updating the progress bar"""
         af = _instances["tablepanel"]
         af.af.update(val=(ind/t)*100)
+    
+    for val in filesframe.values():
+        val.destroy()
+    fp = _instances["filepanel"]
+    fp.transfer = False
+    btn = _instances["transferBtn"]
+    btn["state"] = ACTIVE
+    filesframe.clear()
+    transferringFilesFrames.clear()
 
 def getFileType(filename):
     _ext = filename[-3:] if filename[-4] == '.' else filename[-4:]
